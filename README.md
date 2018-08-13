@@ -8,14 +8,14 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 
-data =pd.read_csv('sdtrain.csv',sep =';') ########importing data######
-testdata =pd.read_csv('sdtest.csv',sep =';') ########train data###
-tdata =data                             ##################################train data#####################
-y_train =data['Occurance']              #############y train  data#################################
-y_test =testdata['Occurance']           ####################y test data####################################
-del testdata['Occurance']               ################### removing the occurance test columns ###################
-del tdata['Occurance']                  ################### removing the occurance #########
-del tdata['SMC']                        ###########optinal ############wanted to  check both dependency on irrigation ########
+data =pd.read_csv('sdtrain.csv',sep =';') 
+testdata =pd.read_csv('sdtest.csv',sep =';') #
+tdata =data                             
+y_train =data['Occurance']              
+y_test =testdata['Occurance']           
+del testdata['Occurance']              
+del tdata['Occurance']                  
+del tdata['SMC']                        
 del testdata['SMC']
 
 X_train=pd.get_dummies(tdata,columns =['Crop','Crop_variety','Crop_disease']) ########getdummies for crop,and crop varieties
@@ -34,13 +34,3 @@ y_predict2 = reglm.predict(X_test)                ####################y predicte
 aclf =metrics.accuracy_score(y_test, y_predict1)*100 ########accuracy  level of random classifier
 alm =metrics.accuracy_score(y_test, y_predict2)*100  ##########accuracy level of logistic model
                            
-
-
-
-
-    
-
-
-#lf_gini = DecisionTreeClassifier(criterion = "gini",
-#random_state = 100,max_depth=3, min_samples_leaf=5)
- 
